@@ -1,0 +1,67 @@
+:root {
+    --white: rgb(244, 244, 244);
+    --black: rgb(21, 21, 21);
+    --lightgrey: rgb(222, 222, 222);
+    --darkgrey: gray;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 200px 200px 300px 200px;
+}
+
+.tic-tac-toe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 200px;
+    gap: 0;
+}
+
+.tic-tac-toe-unit {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+}
+
+.tic-tac-toe-unit:nth-child(3n) {
+    border-right: none;
+}
+
+.tic-tac-toe-unit:nth-last-child(-n+3) {
+    border-bottom: none;
+}
+
+.tic-tac-toe-unit:hover {
+    cursor:grab;
+}
+
+.tic-tac-toe-unit:active {
+    cursor: grabbing;
+}
