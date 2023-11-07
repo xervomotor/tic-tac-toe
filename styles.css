@@ -16,11 +16,11 @@
 html {
     position: relative;
     min-height: 100%;
+    font-size: 18px;
 }
 
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 18px;
     background-color: var(--white);
     color: var(--black);
 }
@@ -33,14 +33,14 @@ main {
     padding: 200px 200px 300px 200px;
 }
 
-.tic-tac-toe-grid {
+#gameboard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 200px;
     gap: 0;
 }
 
-.tic-tac-toe-unit {
+.game-cell {
     width: 80px;
     height: 80px;
     display: flex;
@@ -50,18 +50,18 @@ main {
     border-bottom: 2px solid var(--black);
 }
 
-.tic-tac-toe-unit:nth-child(3n) {
+.game-cell:nth-child(3n) {
     border-right: none;
 }
 
-.tic-tac-toe-unit:nth-last-child(-n+3) {
+.game-cell:nth-last-child(-n+3) {
     border-bottom: none;
 }
 
-.tic-tac-toe-unit:hover {
+.game-cell:hover {
     cursor:grab;
 }
 
-.tic-tac-toe-unit:active {
+.game-cell:active {
     cursor: grabbing;
 }
