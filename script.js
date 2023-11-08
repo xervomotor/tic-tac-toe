@@ -1,9 +1,9 @@
 // Gameboard module (IIFE)
 const Gameboard = (() => {
     let gameboard = ['', '', '', '', '', '', '', '', ''];
-
-    const gameboardGrid = document.querySelector('#gameboard');
     
+    // Event delegation
+    const gameboardGrid = document.querySelector('#gameboard');
     gameboardGrid.addEventListener('click', e => {
         const cell = e.target;
         const index = cell.dataset.index;
