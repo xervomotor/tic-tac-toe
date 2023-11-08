@@ -1,24 +1,53 @@
+// DOM manipulations
+const gameboardGrid = document.querySelector('#gameboard');
+const gameboardCell = document.querySelectorAll('.game-cell');
+
+gameboardCell.forEach((cell, index) => {
+    cell.addEventListener('click', () => {
+        Gameboard.setCell(john, index);
+    });
+})
+
+// Gameboard module (IIFE)
 const Gameboard = (() => {
-    let gameboard = ['', '', '', '', '', '', '', '', '',];
+    let gameboard = ['', '', '', '', '', '', '', '', ''];
     
-    const setCell = (index, marker) => {
+    const getState = () => gameboard.slice();
+    const setCell = (player, index) => {
         if (index >= gameboard.length) return;
-        gameboard[index] = marker;
-    }
-    const getCell = (index) => {
-        if (index >= gameboard.length) return;
-        return gameboard[index];
+        gameboard[index] = player.marker;
+        gameboardCell[index].textContent = player.marker;
     }
     const reset = () => {
-        gameboard = ['', '', '', '', '', '', '', '', '',];
+        gameboard = ['', '', '', '', '', '', '', '', ''];
+        gameboardCell.forEach(cell => {
+            cell.textContent = '';
+        })
     }
-    return {setCell, getCell, reset};
+    return { setCell, reset, getState };
 })();
 
-const Player = (name, marker) => {
-    this.name = name;
-    this.marker = marker;
+function createPlayer (name, marker) {
+    return { name, marker };
 }
 
-const playerX = Player('playerX', 'X');
-const playerO = Player('playerO', 'O');
+
+
+
+
+// Tests
+const john = createPlayer('john', 'X')
+const ben = createPlayer('ben', 'O');
+
+console.log(john);
+console.log(ben);
+
+Gameboard.setCell(john, 4);
+Gameboard.setCell(ben, 8);
+Gameboard.setCell(john, 2);
+Gameboard.setCell(ben, 7);
+console.log(Gameboard.getState());
+
+Gameboard.reset();
+console.log(Gameboard.getState());
+
