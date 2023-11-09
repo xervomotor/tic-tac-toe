@@ -79,6 +79,7 @@ footer a {
 }
 
 button {
+    letter-spacing: 2px;
     background-color: var(--black);
     color: var(--white);
     border: none;
@@ -114,7 +115,11 @@ button:active {
 
     main {
         padding: 200px; 
-}
+    }
+
+    button {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 480px) { 
@@ -123,10 +128,14 @@ button:active {
     }
 
     #gameboard {
-        padding: 20px; 
+        padding: 20px 20px 40px 20px; 
     }
 
     main {
-        padding: 150px 50px 50px 50px;
+        padding: 140px 50px 50px 50px;
+    }
+
+    button {
+        font-size: 14px;
     }
 }
