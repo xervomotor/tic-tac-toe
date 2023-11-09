@@ -30,7 +30,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 200px 100px;
+    padding: 200px 200px 100px 200px;
 }
 
 footer {
@@ -38,7 +38,6 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 
 footer a {
