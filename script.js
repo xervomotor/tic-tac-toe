@@ -8,6 +8,7 @@ const Gameboard = (() => {
         [0, 4, 8], [2, 4, 6]
     ];
     let gameActive = true;
+    const gameResult = document.querySelector('#game-result')
     
     // Event delegation
     const gameboardGrid = document.querySelector('#gameboard');
@@ -30,7 +31,6 @@ const Gameboard = (() => {
         gameboard[index] = player.marker;
         document.querySelector(`[data-index="${index}"]`).textContent = player.marker;
 
-        const gameResult = document.querySelector('#game-result')
         if (checkForWinner(player)) {
             gameActive = false;
             displayResult(gameResult, player.name + ' wins.');
@@ -77,8 +77,14 @@ const Gameboard = (() => {
         const main = document.querySelector('main');
         const resetBtn = document.createElement('button');
         resetBtn.textContent = 'Reset';
-        resetBtn.className = 'fade-in';
+        resetBtn.className = 'fade-in transition300';
         main.appendChild(resetBtn);
+
+        resetBtn.addEventListener('click', () => {
+            reset();
+            resetBtn.remove();
+            gameResult.textContent = '';
+        })
 
         setTimeout(() => {
             resetBtn.classList.add('visible');
@@ -91,6 +97,7 @@ const Gameboard = (() => {
         document.querySelectorAll('.game-cell').forEach(cell => {
             cell.textContent = '';
         })
+
     }
 
     return { getState, reset };

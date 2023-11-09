@@ -78,29 +78,18 @@ button {
     align-items: center; 
     margin: 30px 0;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    will-change: transform, box-shadow;
+    transition: all 0.2s linear;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-button:hover {
+button:hover, button:focus {
     background-color: var(--darkgrey);
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.3);
-}
-  
-button:disabled {
-    background-color: var(--lightgrey);
-    cursor: not-allowed;
-    box-shadow: none;
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 14px 0 rgba(0,0,0,0.3);
 }
 
-
-.fade-in {
-    opacity: 0;
-    transition: opacity 1s ease-in;
-}
-
-.fade-in.visible {
-    opacity: 1;
+button:active {
+    background-color: var(--black);
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2); 
 }
