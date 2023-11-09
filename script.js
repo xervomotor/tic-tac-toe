@@ -1,4 +1,4 @@
-// Gameboard module (IIFE)
+// Gameboard module
 const Gameboard = (() => {
 
     let gameboard = ['', '', '', '', '', '', '', '', ''];
@@ -30,12 +30,15 @@ const Gameboard = (() => {
         gameboard[index] = player.marker;
         document.querySelector(`[data-index="${index}"]`).textContent = player.marker;
 
+        const gameResult = document.querySelector('#game-result')
         if (checkForWinner(player)) {
-            console.log(player.name + ' wins.');
             gameActive = false;
+            displayResult(gameResult, player.name + ' wins.');
+            displayResetBtn();
         } else if (gameboard.every(cell => cell !== '')) {
-            console.log('draw.');
             gameActive = false;
+            displayResult(gameResult, 'Draw.');
+            displayResetBtn();
         }
     }
 
@@ -58,6 +61,30 @@ const Gameboard = (() => {
         })
     }
 
+    const displayResult = (element, text, interval = 20) => {
+        let index = 0;
+        element.textContent = '';
+        function nextLetter() {
+            element.textContent += text[index++];
+            if (index < text.length) {
+                setTimeout(nextLetter, interval);
+            }
+        }
+        nextLetter();
+    }
+
+    const displayResetBtn = () => {
+        const main = document.querySelector('main');
+        const resetBtn = document.createElement('button');
+        resetBtn.textContent = 'Reset';
+        resetBtn.className = 'fade-in';
+        main.appendChild(resetBtn);
+
+        setTimeout(() => {
+            resetBtn.classList.add('visible');
+        }, 10);
+    }
+
     const reset = () => {
         gameboard = ['', '', '', '', '', '', '', '', ''];
         gameActive = true;
@@ -74,8 +101,6 @@ const Gameboard = (() => {
 function createPlayer (name, marker) {
     return { name, marker };
 }
-
-
 
 function initializeGame() {
     const user = createPlayer('User', 'X');
