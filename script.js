@@ -7,6 +7,7 @@ const Gameboard = (() => {
         [0, 3, 6], [1, 4, 7], [2, 5, 8],
         [0, 4, 8], [2, 4, 6]
     ];
+    let gameActive = true;
     
     // Event delegation
     const gameboardGrid = document.querySelector('#gameboard');
@@ -17,7 +18,7 @@ const Gameboard = (() => {
             setCell(user, index);
             setTimeout(() => {
                 computerMove();
-            }, Math.floor(Math.random() * 400) + 800);
+            }, Math.floor(Math.random() * 200) + 600);
             
         }
     });
@@ -25,14 +26,16 @@ const Gameboard = (() => {
     const getState = () => gameboard.slice();
 
     const setCell = (player, index) => {
-        if (index >= gameboard.length) return;
+        if (index >= gameboard.length || !gameActive) return;
         gameboard[index] = player.marker;
         document.querySelector(`[data-index="${index}"]`).textContent = player.marker;
 
         if (checkForWinner(player)) {
             console.log(player.name + ' wins.');
+            gameActive = false;
         } else if (gameboard.every(cell => cell !== '')) {
             console.log('draw.');
+            gameActive = false;
         }
     }
 
@@ -57,12 +60,13 @@ const Gameboard = (() => {
 
     const reset = () => {
         gameboard = ['', '', '', '', '', '', '', '', ''];
+        gameActive = true;
         document.querySelectorAll('.game-cell').forEach(cell => {
             cell.textContent = '';
         })
     }
 
-    return { getState, setCell, reset };
+    return { getState, reset };
 
 })();
 
