@@ -24,7 +24,7 @@ const Gameboard = (() => {
             cell.textContent = '';
         })
     }
-    return { setCell, reset, getState };
+    return { getState, setCell, reset };
 })();
 
 // Factory function
@@ -40,15 +40,5 @@ function createPlayer (name, marker) {
 const john = createPlayer('john', 'X')
 const ben = createPlayer('ben', 'O');
 
-console.log(john);
-console.log(ben);
-
-Gameboard.setCell(john, 4);
-Gameboard.setCell(ben, 8);
-Gameboard.setCell(john, 2);
-Gameboard.setCell(ben, 7);
-console.log(Gameboard.getState());
-
 Gameboard.reset();
-console.log(Gameboard.getState());
 
