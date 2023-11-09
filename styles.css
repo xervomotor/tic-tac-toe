@@ -33,6 +33,19 @@ main {
     padding: 200px 100px;
 }
 
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+footer a {
+    text-decoration: underline;
+    color: var(--black);
+}
+
 #gameboard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

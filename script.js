@@ -61,7 +61,7 @@ const Gameboard = (() => {
         })
     }
 
-    const displayResult = (element, text, interval = 20) => {
+    const displayResult = (element, text, interval = 50) => {
         let index = 0;
         element.textContent = '';
         function nextLetter() {
@@ -111,7 +111,7 @@ function createPlayer (name, marker) {
 
 function initializeGame() {
     const user = createPlayer('User', 'X');
-    const computer = createPlayer('computer', 'O');
+    const computer = createPlayer('Computer', 'O');
     let currentPlayer = user;
     Gameboard.reset();
     return { user, computer, currentPlayer };
